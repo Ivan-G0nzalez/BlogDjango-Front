@@ -15,20 +15,26 @@ export const get_blog_list = () => async (dispatch: any) => {
       Accept: 'application/json',
     },
   };
-
   try {
     const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/api/blog/`,
+      // `${process.env.REACT_APP_API_URL}/api/blog/`,
+      `http://127.0.0.1:8000/api/blog/`,
       config
     );
     if (res.status === 200) {
       dispatch({ type: GET_BLOG_LIST_SUCCESS, payload: res.data });
+      console.log(res.data);
     } else {
       dispatch({
         type: GET_BLOG_LIST_FAIL,
       });
+      console.log('No entro');
     }
-  } catch {}
+  } catch {
+    dispatch({
+      type: GET_BLOG_LIST_FAIL,
+    });
+  }
 };
 
 export const get_blog_list_page = (p: any) => async (dispatch: any) => {

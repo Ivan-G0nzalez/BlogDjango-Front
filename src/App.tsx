@@ -14,6 +14,8 @@ function App() {
           <Route path="*" element={<Error404 />} />
           {/* Home Display */}
           <Route path="" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/post/:slug" element={<BlogPost />} />
         </Routes>
       </Router>
     </Provider>
