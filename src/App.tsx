@@ -4,6 +4,8 @@ import Home from './containers/pages/Home';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import store from './store';
+import BlogPost from './containers/pages/blog/BlogPost';
+import Blog from './containers/pages/blog/Blog';
 
 function App() {
   return (

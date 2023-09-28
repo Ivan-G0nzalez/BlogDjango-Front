@@ -18,12 +18,12 @@ export const get_blog_list = () => async (dispatch: any) => {
   try {
     const res = await axios.get(
       // `${process.env.REACT_APP_API_URL}/api/blog/`,
-      `http://127.0.0.1:8000/api/blog/`,
+
+      `${import.meta.env.VITE_APP_API_URL}/api/blog/`,
       config
     );
     if (res.status === 200) {
       dispatch({ type: GET_BLOG_LIST_SUCCESS, payload: res.data });
-      console.log(res.data);
     } else {
       dispatch({
         type: GET_BLOG_LIST_FAIL,
@@ -34,6 +34,7 @@ export const get_blog_list = () => async (dispatch: any) => {
     dispatch({
       type: GET_BLOG_LIST_FAIL,
     });
+    console.log('No entro aca');
   }
 };
 
@@ -46,7 +47,7 @@ export const get_blog_list_page = (p: any) => async (dispatch: any) => {
 
   try {
     const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/api/blog/?p=${p}`,
+      `${import.meta.env.VITE_APP_API_URL}/api/blog/?p=${p}`,
       config
     );
 
@@ -76,7 +77,7 @@ export const get_blog = (slug: any) => async (dispatch: any) => {
 
   try {
     const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/api/blog/${slug}`,
+      `${import.meta.env.VITE_APP_API_URL}/api/blog/${slug}`,
       config
     );
 

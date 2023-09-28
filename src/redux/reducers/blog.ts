@@ -20,7 +20,7 @@ export default function blog(state = initialState, action: any) {
     case GET_BLOG_LIST_SUCCESS:
       return {
         ...state,
-        blog_list: payload.results.posts,
+        blog_list: payload.results.post,
         count: payload.count,
         next: payload.next,
         previous: payload.previous,
