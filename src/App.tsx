@@ -7,7 +7,7 @@ import store from './store';
 import BlogPost from './containers/pages/blog/BlogPost';
 import Blog from './containers/pages/blog/Blog';
 
-function App() {
+function App(): JSX.Element {
   return (
     <Provider store={store}>
       <Router>
