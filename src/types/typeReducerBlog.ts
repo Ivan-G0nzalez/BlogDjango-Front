@@ -1,0 +1,4 @@
+export enum ActionTypes {
+  GET_BLOG_LIST_SUCCESS = 'GET_BLOG_LIST_SUCCESS',
+  GET_BLOG_LIST_FAIL = 'GET_BLOG_LIST_FAIL',
+}
