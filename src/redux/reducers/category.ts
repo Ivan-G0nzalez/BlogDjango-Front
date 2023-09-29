@@ -1,10 +1,20 @@
 import { GET_CATEGORIES_SUCCESS, GET_CATEGORIES_FAIL } from '../action/types';
+import {
+  IPropsCategoryState,
+  IPropsCategoryFail,
+  IPropsCatergoriesSuccessAction,
+} from '../../interface/categoryInterface';
 
-const initialState = {
+const initialState: IPropsCategoryState = {
   categories: null,
 };
 
-export default function category(state = initialState, action: any) {
+type CategoryActionTypes = IPropsCatergoriesSuccessAction | IPropsCategoryFail;
+
+export default function category(
+  state = initialState,
+  action: CategoryActionTypes
+): IPropsCategoryState {
   const { type } = action;
 
   switch (type) {

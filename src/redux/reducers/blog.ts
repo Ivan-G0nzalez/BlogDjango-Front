@@ -5,7 +5,22 @@ import {
   GET_BLOG_FAIL,
 } from '../action/types';
 
-const initialState = {
+import {
+  IBlogStage,
+  BlogListSuccessAction,
+  BlogListFailAction,
+  BlogSuccessAction,
+  BlogFailAction,
+} from '../../interface/blogInterfaces';
+
+// Create a union type for all possible action types
+type BlogActionTypes =
+  | BlogListSuccessAction
+  | BlogListFailAction
+  | BlogSuccessAction
+  | BlogFailAction;
+
+const initialState: IBlogStage = {
   blog_list: null,
   post: null,
   count: null,
@@ -13,17 +28,18 @@ const initialState = {
   previous: null,
 };
 
-export default function blog(state = initialState, action: any) {
-  const { type, payload } = action;
-
-  switch (type) {
+export default function blog(
+  state = initialState,
+  action: BlogActionTypes
+): IBlogStage {
+  switch (action.type) {
     case GET_BLOG_LIST_SUCCESS:
       return {
         ...state,
-        blog_list: payload.results.post,
-        count: payload.count,
-        next: payload.next,
-        previous: payload.previous,
+        blog_list: action.payload.results.post,
+        count: action.payload.count,
+        next: action.payload.next,
+        previous: action.payload.previous,
       };
     case GET_BLOG_LIST_FAIL:
       return {
@@ -37,7 +53,7 @@ export default function blog(state = initialState, action: any) {
     case GET_BLOG_SUCCESS:
       return {
         ...state,
-        post: payload.post,
+        post: action.payload.post,
       };
 
     case GET_BLOG_FAIL:
